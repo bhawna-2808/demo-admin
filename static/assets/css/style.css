@@ -16535,6 +16535,9 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
   padding-top: 0.25rem !important;
   padding-bottom: 0.25rem !important;
 }
+.bg-gradient-primary {
+  background: #61CE70 !important;
+}
 
 .py-2 {
   padding-top: 0.5rem !important;
@@ -21210,7 +21213,7 @@ code {
 }
 
 .bg-gradient-primary {
-  background: linear-gradient(to right, #da8cff, #9a55ff) !important;
+  background: #61CE70 !important;
 }
 
 .bg-gradient-secondary {
