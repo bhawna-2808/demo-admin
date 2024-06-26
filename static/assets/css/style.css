@@ -16860,7 +16860,8 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
 /* rtl:end:remove */
 .text-primary, .list-wrapper .completed .remove {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  color:#61CE70 !important
+  /* color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important; */
 }
 
 .text-secondary, .list-wrapper .remove {
@@ -22596,16 +22597,18 @@ code {
 
 /* gradient buttons */
 .btn-gradient-primary {
-  background: linear-gradient(to right, #da8cff, #9a55ff);
+  background:#61CE70 !important
+  /* background: linear-gradient(to right, #da8cff, #9a55ff);
   border: 0;
   -webkit-transition: opacity 0.3s ease;
   -moz-transition: opacity 0.3s ease;
   -ms-transition: opacity 0.3s ease;
   -o-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease; */
 }
 .btn-gradient-primary:not([disabled]):not(.disabled):active, .btn-gradient-primary:not([disabled]):not(.disabled).active, .show > .btn-gradient-primary.dropdown-toggle {
-  background: linear-gradient(to right, #da8cff, #9a55ff);
+  background: linear-gradient(to right, #61CE70 , #9a55ff);
+  
 }
 .btn-gradient-primary:hover {
   opacity: 0.8;
