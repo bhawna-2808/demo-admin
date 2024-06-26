@@ -55,13 +55,13 @@
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">
                       <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input"> Keep me signed in </label>
+                        {% comment %} <input type="checkbox" class="form-check-input"> Keep me signed in </label> {% endcomment %}
                     </div>
-                    <a href="#" class="auth-link text-primary">Forgot password?</a>
+                    {% comment %} <a href="#" class="auth-link text-primary">Forgot password?</a> {% endcomment %}
                   </div>
                   <div class="mb-2 d-grid gap-2">
-                    <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                      <i class="mdi mdi-facebook me-2"></i>Connect using facebook </button>
+                    {% comment %} <button type="button" class="btn btn-block btn-facebook auth-form-btn"> {% endcomment %}
+                      {% comment %} <i class="mdi mdi-facebook me-2"></i>Connect using facebook </button> {% endcomment %}
                   </div>
                   <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="{% url 'register' %}" class="text-primary">Create</a>
                   </div>
@@ -86,6 +86,7 @@
     <script src="{% static 'assets/js/settings.js' %}"></script>
     <script src="{% static 'assets/js/todolist.js' %}"></script>
     <script src="{% static 'assets/js/jquery.cookie.js' %}"></script>
+
     <!-- endinject -->
   </body>
 </html>

@@ -27,7 +27,7 @@ def index(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, "Welcome to the Dashboard!")
+                # messages.success(request, "Welcome to the Dashboard!")
                 return redirect("dashboard")
             else:
                 messages.error(request, "Invalid email or password!")
@@ -103,19 +103,19 @@ def contact_list(request):
 
 def contact(request, pk=None, is_delete=0):
     form = ContactForm(request.POST or None)
-    message = ' Contact Added Successfully !!'
+    # message = ' Contact Added Successfully !!'
     if pk is not None and is_delete == 0:
         contact_ins = Contact.objects.get(pk=pk)
         form = ContactForm(request.POST or None, instance=contact_ins)
-        message = 'Contact Updated Successfully !!'
+        # message = 'Contact Updated Successfully !!'
     elif pk is not None and is_delete != 0:
         Contact.objects.filter(pk=pk).delete()
-        message = 'Contact Deleted Successfully !!'
-        messages.success(request, message)
+        # message = 'Contact Deleted Successfully !!'
+        # messages.success(request, message)
         return redirect('contact-list')
     if form.is_valid():
         form.save()
-        messages.success(request, message)
+        # messages.success(request, message)
         return redirect('contact-list')
     
     context = {
