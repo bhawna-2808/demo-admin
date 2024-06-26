@@ -1,0 +1,43 @@
+{% extends 'include/base.html' %}
+{% load static widget_tweaks %}
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Contact</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Contact</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Edit Contact form</h4>
+                    <!-- Form -->
+                    <form method="POST" enctype="multipart/form-data" id="videovalidate">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {% for field in form.visible_fields %}
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {% render_field field class="form-control" %}
+                                {% for error in field.errors %}
+                                    <span class="help-block text-danger form-error">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        <div id="meta"></div>
+                        <div class="card-footer">
+                            <input type="submit" value="Submit" class="btn btn-primary" id="subb">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

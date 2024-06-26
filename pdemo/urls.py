@@ -22,6 +22,11 @@ urlpatterns = [
     path("register/", register, name='register'),
     path("error-404/", error_404, name='error-404'),
     path("error-500/", error_500, name='error-500'),
+    path("contact", contact, name="contact"),
+    path("contact-list/", contact_list, name='contact-list'),
+    path('delete_contact/<int:contact_id>/', delete_contact, name='delete_contact'),
+    path('edit_contact/<int:contact_id>/', edit_contact, name='edit_contact'),
+
     
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

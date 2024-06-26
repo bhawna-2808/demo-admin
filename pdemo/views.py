@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from login.models import CustomUser
+from .models import *
+from .forms import *
 # Create your views here.
 
 
@@ -90,3 +92,62 @@ def error_404(request):
 def error_500(request):
     return render(request, 'pages/samples/error-500.html')
 #
+
+def contact_list(request):
+    try:
+        instance = Contact.objects.all()
+    except Exception as e:
+        print(e)
+    return render(request, "pages/contact/contactlist.html", {"instance": instance})
+
+
+def contact(request, pk=None, is_delete=0):
+    form = ContactForm(request.POST or None)
+    message = ' Contact Added Successfully !!'
+    if pk is not None and is_delete == 0:
+        contact_ins = Contact.objects.get(pk=pk)
+        form = ContactForm(request.POST or None, instance=contact_ins)
+        message = 'Contact Updated Successfully !!'
+    elif pk is not None and is_delete != 0:
+        Contact.objects.filter(pk=pk).delete()
+        message = 'Contact Deleted Successfully !!'
+        messages.success(request, message)
+        return redirect('contact-list')
+    if form.is_valid():
+        form.save()
+        messages.success(request, message)
+        return redirect('contact-list')
+    
+    context = {
+        'form': form,
+       
+    }
+    return render(request, 'pages/contact/add_contact.html', context)
+
+
+def delete_contact(request, contact_id):
+    instance = get_object_or_404(Contact, id=contact_id)
+    instance.delete()
+    return redirect("contact-list")
+
+
+def edit_contact(request, contact_id):
+    instance = get_object_or_404(Contact, id=contact_id)
+    form = ContactForm(request.POST or None, instance=instance)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            # messages.success(request, "Testimonial Successfully Changed!")
+            return redirect("contact-list")
+
+        else:
+            return render(
+                request,
+                "pages/contact/edit_contact.html",
+                {"form": form, "title": "Update contact"},
+            )
+    return render(
+        request,
+        "pages/contact/edit_contact.html",
+        {"form": form, "title": "Update contact"},
+    )
